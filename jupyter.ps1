@@ -1,3 +1,5 @@
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
 # PowerShell Script to Fix Jupyter Kernel Errors in Nerdio AVD
 # through Nerdio scripted action or user session)
 
