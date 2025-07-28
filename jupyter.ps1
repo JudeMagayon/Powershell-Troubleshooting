@@ -1,11 +1,8 @@
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-
 # PowerShell Script to Fix Jupyter Kernel Errors in Nerdio AVD
 # through Nerdio scripted action or user session)
 
-Write-Output "`n[🔧] Starting Jupyter kernel repair..."
+Write-Output "Starting Jupyter kernel repair..."
 
-# Define user paths
 $UserProfile = $env:USERPROFILE
 $AppData = $env:APPDATA
 $JupyterRuntime = Join-Path $AppData "jupyter\runtime"
@@ -13,7 +10,6 @@ $JupyterData = Join-Path $AppData "jupyter\data"
 $JupyterDir = Join-Path $UserProfile ".jupyter"
 $IPythonDir = Join-Path $UserProfile ".ipython"
 
-# Step 1: Clean up problematic folders
 Write-Output "Cleaning up existing Jupyter folders..."
 
 $foldersToDelete = @($JupyterRuntime, $JupyterDir, $IPythonDir)
@@ -34,12 +30,10 @@ Write-Output " Recreating Jupyter runtime folders..."
 New-Item -ItemType Directory -Force -Path $JupyterRuntime | Out-Null
 New-Item -ItemType Directory -Force -Path $JupyterDir | Out-Null
 
-# Step 3: Set persistent environment variables
 Write-Output " Setting user environment variables..."
 [Environment]::SetEnvironmentVariable("JUPYTER_RUNTIME_DIR", $JupyterRuntime, "User")
 [Environment]::SetEnvironmentVariable("JUPYTER_DATA_DIR", $JupyterData, "User")
 
-# Step 4: Activate Python environment and reinstall ipykernel
 Write-Output "Installing notebook and ipykernel in current Python environment..."
 
 $python = "python"  # Assumes python is in PATH
