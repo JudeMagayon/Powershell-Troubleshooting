@@ -1,0 +1,6 @@
+$env:IPYTHONDIR = "C:\Temp\JupyterProfile\.ipython"
+$env:JUPYTER_CONFIG_DIR = "C:\Temp\JupyterProfile\jupyter"
+
+# Create folders if missing
+New-Item -ItemType Directory -Force -Path $env:IPYTHONDIR | Out-Null
+New-Item -ItemType Directory -Force -Path $env:JUPYTER_CONFIG_DIR | Out-Null
