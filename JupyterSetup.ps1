@@ -68,6 +68,12 @@ if ($LASTEXITCODE -eq 0) {
 
 Write-Host "`n=== All checks completed successfully! ===" -ForegroundColor Green
 
+Write-Host "`n=== Step 5: Creating and Running a Test Jupyter Notebook ===" -ForegroundColor Cyan
+
+$DesktopPath = [Environment]::GetFolderPath("Desktop")
+$TestNotebook = Join-Path $DesktopPath "Test_Jupyter.ipynb"
+
+
 # JSON content for a simple notebook with one code cell
 $notebookContent = @"
 {
